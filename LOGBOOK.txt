@@ -1,0 +1,9 @@
+
+==============================
+Z2C PROJECT IDEAS
+==============================
+- CountTrainer (Blackjack counting practice trainer - educational / reaction speed / math)
+- Conway's Game of Life (terminal -> GIF -> web)
+- Markov Chain Generator (text generator / lyrics-style / story snippets)
+Sun Jan 18 08:52:52 PST 2026 - LEFT OFF: Activated .venv, numpy+pillow ok. Ran mandelbrot.py -> saved ~/zero_to_cloud/mandelbrot.png. Next: move to outputs/images/mandelbrot with timestamp + make scripts auto-save for mandelbrot/cathedral/enderman.
+---- SESSION LOG ----

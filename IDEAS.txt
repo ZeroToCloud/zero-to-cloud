@@ -1,0 +1,1 @@
+- Idea: Docker Plex (Plex Media Server container) — learn volumes/ports/perms

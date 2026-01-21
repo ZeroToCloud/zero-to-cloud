@@ -1,0 +1,24 @@
+agent:
+  work: ping
+  interval_seconds: 5
+
+controller:
+  queue_name: jobs
+  result_queue: results
+
+
+mandelbrot:
+  center_real: -0.7435
+  center_imag: 0.1314
+  scale: 0.008
+  max_iter: 800
+  output: mandelbrot_from_config.png
+
+
+animation:
+  enabled: true
+  frames: 120
+  zoom_per_frame: 0.97
+  out_dir: "frames"
+  video_name: "zoom.mp4"
+  fps: 30
