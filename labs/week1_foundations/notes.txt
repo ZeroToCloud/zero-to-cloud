@@ -1,0 +1,4 @@
+Zero to Cloud - week 1
+Session 1: Linux navigation + files
+Goal: feel calm in the terminal
+Markov chains are interesting

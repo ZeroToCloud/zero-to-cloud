@@ -1,0 +1,8 @@
+grid:
+  width: 20
+  height: 10
+sim:
+  fps: 2
+  steps: 50
+seed:
+  pattern: blinker

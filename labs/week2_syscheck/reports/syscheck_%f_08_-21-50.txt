@@ -1,0 +1,45 @@
+ ________________
+|   ZERO2CLOUD   |
+|  SYS CHECK ✅  |
+|________________|
+
+Time: Sun Jan 18 16:21:51 UTC 2026
+
+[User / Host]
+User: root
+Host: Z2C-BOX
+
+[OS]
+Linux Z2C-BOX 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+[Docker]
+Docker version 28.2.2, build 28.2.2-0ubuntu1~24.04.1
+
+[CPU]
+CPU(s):                               16
+On-line CPU(s) list:                  0-15
+Model name:                           AMD Ryzen 7 6800H with Radeon Vega Mobile Gfx
+Thread(s) per core:                   2
+Core(s) per socket:                   8
+Socket(s):                            1
+NUMA node0 CPU(s):                    0-15
+
+[Memory]
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       737Mi        13Gi       3.9Mi       851Mi        14Gi
+Swap:          4.0Gi          0B       4.0Gi
+
+[Disk]
+Linux / :
+Filesystem      Size  Used Avail Use% Mounted on
+overlay        1007G  9.2G  947G   1% /
+
+[IP]
+172.18.0.2
+
+[Online?]
+Online ✅
+
+==============================
+      Z2C READY 🚀
+==============================

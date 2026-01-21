@@ -12,3 +12,17 @@ Thumbs.db
 outputs/
 syscheck/netcheck/netcheck_*.txt
 syscheck/netcheck/ports_*.txt
+
+# Python virtual environments
+.venv/
+**/.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Generated outputs
+out_frames/
+**/out_frames/
+*.gif
+*.png

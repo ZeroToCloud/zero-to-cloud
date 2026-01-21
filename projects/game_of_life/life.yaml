@@ -1,0 +1,20 @@
+
+
+grid:
+  width: 200
+  height: 80
+
+sim:
+  fps: 60
+  steps: 80
+  wrap: true
+
+seed:
+  pattern: blinker
+
+output:
+  enabled: true
+  folder: out_frames
+  cell_px: 8        # bigger = more detail
+  every_n: 1        # save every frame (use 2 or 5 if huge)
+

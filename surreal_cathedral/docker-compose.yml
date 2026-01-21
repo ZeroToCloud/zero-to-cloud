@@ -1,0 +1,13 @@
+services:
+  cathedral:
+    build: .
+    image: z2c-cathedral:compose
+    volumes:
+      - ./out:/out
+
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./out:/usr/share/nginx/html:ro
