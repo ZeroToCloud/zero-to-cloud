@@ -1,0 +1,26 @@
+# Zero2Cloud Typing Drill Config
+
+ui:
+  use_rich: true
+  title: "ZERO2CLOUD — Typing Drill"
+  theme:
+    prompt: "cyan"
+    good: "green"
+    warn: "yellow"
+    bad: "red"
+    dim: "dim"
+
+  # Fonts can't be enforced by a terminal script; set in your terminal settings.
+  font_hint:
+    family: "Cascadia Mono / Fira Code"
+    size: 14
+
+session:
+  mode: "fixed"          # fixed | timed
+  minutes: 15            # used if mode: timed
+  strict: true           # true = must match exactly for "Perfect"
+  show_expected_on_fail: true
+  save_log: true
+
+inputs:
+  prompts_file: "prompts.txt"

@@ -1,0 +1,20 @@
+pwd
+Print working directory (shows your current folder path).
+
+ls -lah
+List files including hidden ones, long format, human-readable sizes.
+
+cd ..
+Go up one directory (parent folder).
+
+chmod +x run.sh
+Add execute permission so the script can be run.
+
+./run.sh
+Run a file in the current directory (don’t search PATH).
+
+echo $PATH
+Show PATH (folders searched for commands).
+
+sudo whoami
+Run whoami as root (admin user).

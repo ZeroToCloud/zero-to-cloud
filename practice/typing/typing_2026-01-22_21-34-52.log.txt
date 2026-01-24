@@ -1,0 +1,72 @@
+ZERO2CLOUD — Typing Drill
+Mode: fixed, Minutes: 15.0
+Lines attempted: 16
+Perfect lines: 8/16
+Average match: 91.8%
+Time: 5.4 min
+Rough WPM: 11.7
+
+EXPECTED: The quick brown fox jumps over the lazy dog.
+TYPED:    The quick browm foc jumos over the lazy dog.
+MATCH:    93.2% 
+
+EXPECTED: Linux is file paths, permissions, and practice.
+TYPED:    Linux is file paths, permissions, and practice.
+MATCH:    100.0% PERFECT
+
+EXPECTED: I will get better every day.
+TYPED:    i will get better ever day.
+MATCH:    94.5% 
+
+EXPECTED: cd ~/zero_to_cloud
+TYPED:    cd ~/zero_to_cloud
+MATCH:    100.0% PERFECT
+
+EXPECTED: ls -lah
+TYPED:    ls -lah
+MATCH:    100.0% PERFECT
+
+EXPECTED: tree -L 2 practice
+TYPED:    tree -L 2 practice
+MATCH:    100.0% PERFECT
+
+EXPECTED: bash syscheck/netcheck/netcheck.sh
+TYPED:    bash syscheck/netcheck/netcheck.sh
+MATCH:    100.0% PERFECT
+
+EXPECTED: nano LOGBOOK.md
+TYPED:    nano LOGBOOK.md
+MATCH:    100.0% PERFECT
+
+EXPECTED: git status
+TYPED:    git status
+MATCH:    100.0% PERFECT
+
+EXPECTED: git add .
+TYPED:    git add . 
+MATCH:    94.7% 
+
+EXPECTED: git commit -m "Daily progress"
+TYPED:    git co,k,it -m "Daily progress"
+MATCH:    91.8% 
+
+EXPECTED: git push
+TYPED:    git push
+MATCH:    100.0% PERFECT
+
+EXPECTED: chmod +x run.sh
+TYPED:    chmod =x run.sh
+MATCH:    93.3% 
+
+EXPECTED: ./run.sh
+TYPED:    ./ru,,sh
+MATCH:    75.0% 
+
+EXPECTED: echo $PATH
+TYPED:    echo #[ath 
+MATCH:    47.6% 
+
+EXPECTED: sudo whoami
+TYPED:    sido whoamo 
+MATCH:    78.3% 
+
