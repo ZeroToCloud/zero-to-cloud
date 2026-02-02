@@ -83,6 +83,13 @@ echo ""
 
 
     echo
+    echo "=============================="
+    echo "LISTENING PORTS (ss -tulpen)"
+    echo "=============================="
+    ss -tulpen || true
+
+
+    echo
 
     echo "- Windows ARP table (LAN neighbors Windows has seen):"
     powershell.exe -NoProfile -Command "arp -a" 2>/dev/null || true

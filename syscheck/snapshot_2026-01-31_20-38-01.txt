@@ -1,0 +1,60 @@
+===== ZERO2CLOUD SNAPSHOT =====
+Date: Sat Jan 31 20:38:01 PST 2026
+User: pharr
+
+=== UPTIME ===
+ 20:38:01 up 3 min,  1 user,  load average: 0.02, 0.07, 0.03
+
+=== DISK ===
+Filesystem      Size  Used Avail Use% Mounted on
+none            7.7G     0  7.7G   0% /usr/lib/modules/6.6.87.2-microsoft-standard-WSL2
+none            7.7G  4.0K  7.7G   1% /mnt/wsl
+drivers         758G  514G  245G  68% /usr/lib/wsl/drivers
+/dev/sdd       1007G   12G  945G   2% /
+none            7.7G   80K  7.7G   1% /mnt/wslg
+none            7.7G     0  7.7G   0% /usr/lib/wsl/lib
+rootfs          7.7G  2.7M  7.7G   1% /init
+none            7.7G  952K  7.7G   1% /run
+none            7.7G     0  7.7G   0% /run/lock
+none            7.7G     0  7.7G   0% /run/shm
+none            7.7G  100K  7.7G   1% /mnt/wslg/versions.txt
+none            7.7G  100K  7.7G   1% /mnt/wslg/doc
+C:\             758G  514G  245G  68% /mnt/c
+snapfuse        128K  128K     0 100% /snap/bare/5
+snapfuse        177M  177M     0 100% /snap/chromium/3348
+snapfuse        178M  178M     0 100% /snap/chromium/3352
+snapfuse         74M   74M     0 100% /snap/core22/2216
+snapfuse         74M   74M     0 100% /snap/core22/2292
+snapfuse         67M   67M     0 100% /snap/core24/1243
+snapfuse         67M   67M     0 100% /snap/core24/1267
+snapfuse         49M   49M     0 100% /snap/cups/1138
+snapfuse         48M   48M     0 100% /snap/cups/1142
+snapfuse        252M  252M     0 100% /snap/firefox/7672
+snapfuse        252M  252M     0 100% /snap/firefox/7720
+snapfuse        517M  517M     0 100% /snap/gnome-42-2204/226
+snapfuse        532M  532M     0 100% /snap/gnome-42-2204/247
+snapfuse        670M  670M     0 100% /snap/gnome-46-2404/145
+snapfuse        607M  607M     0 100% /snap/gnome-46-2404/153
+snapfuse         92M   92M     0 100% /snap/gtk-common-themes/1535
+snapfuse        395M  395M     0 100% /snap/mesa-2404/1165
+snapfuse         51M   51M     0 100% /snap/snapd/25577
+snapfuse         49M   49M     0 100% /snap/snapd/25935
+tmpfs           1.6G   20K  1.6G   1% /run/user/1000
+
+=== MEMORY ===
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       722Mi        14Gi       3.9Mi       743Mi        14Gi
+Swap:          4.0Gi          0B       4.0Gi
+
+=== LISTENING PORTS ===
+Netid State  Recv-Q Send-Q  Local Address:Port Peer Address:PortProcess                                                                 
+udp   UNCONN 0      0          127.0.0.54:53        0.0.0.0:*    uid:991 ino:8395 sk:1 cgroup:/system.slice/systemd-resolved.service <->
+udp   UNCONN 0      0       127.0.0.53%lo:53        0.0.0.0:*    uid:991 ino:8393 sk:2 cgroup:/system.slice/systemd-resolved.service <->
+udp   UNCONN 0      0      10.255.255.254:53        0.0.0.0:*    ino:4403 sk:3 cgroup:/ <->                                             
+udp   UNCONN 0      0           127.0.0.1:323       0.0.0.0:*    ino:7174 sk:4 cgroup:/ <->                                             
+udp   UNCONN 0      0               [::1]:323          [::]:*    ino:7175 sk:5 cgroup:/ v6only:1 <->                                    
+tcp   LISTEN 0      4096       127.0.0.54:53        0.0.0.0:*    uid:991 ino:8396 sk:6 cgroup:/system.slice/systemd-resolved.service <->
+tcp   LISTEN 0      1000   10.255.255.254:53        0.0.0.0:*    ino:4404 sk:7 cgroup:/ <->                                             
+tcp   LISTEN 0      4096    127.0.0.53%lo:53        0.0.0.0:*    uid:991 ino:8394 sk:8 cgroup:/system.slice/systemd-resolved.service <->
+tcp   LISTEN 0      4096          0.0.0.0:631       0.0.0.0:*    ino:12463 sk:9 cgroup:/system.slice/snap.cups.cupsd.service <->        
+tcp   LISTEN 0      4096             [::]:631          [::]:*    ino:12464 sk:a cgroup:/system.slice/snap.cups.cupsd.service v6only:1 <->

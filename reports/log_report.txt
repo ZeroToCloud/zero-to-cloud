@@ -1,0 +1,3 @@
+./.git/logs
+3:ERROR failed to start service
+4:error network timeout

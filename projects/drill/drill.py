@@ -2,149 +2,164 @@
 import random
 import time
 
-# =========================
-# QUESTION BANKS
-# =========================
+BANK = [
 
-SINGLE_QUESTIONS = [    {"q": "Show current user", "a": ["whoami"], "combo": ["whoami && id"]},
-    {"q": "Show your user + groups", "a": ["id"], "combo": ["id | head"]},
-    {"q": "Show system info", "a": ["uname -a"], "combo": ["uname -a && lsb_release -a"]},
+    {
+        "q": "Show disk usage of all mounted filesystems",
+        "a": ["df -h"],
+        "hint": "df + human readable"
+    },
+    {
+        "q": "Show disk usage of current folder",
+        "a": ["du -sh ."],
+        "hint": "du summary human"
+    },
+    {
+        "q": "Find files named test.txt starting here",
+        "a": ["find . -name test.txt"],
+        "hint": "find current dir by name"
+    },
+    {
+        "q": "Find all .log files",
+        "a": ["find . -name '*.log'"],
+        "hint": "find by extension"
+    },
+    {
+        "q": "Show running processes",
+        "a": ["ps aux"],
+        "hint": "classic full process list"
+    },
+    {
+        "q": "Show processes in real time",
+        "a": ["top"],
+        "hint": "live process viewer"
+    },
+    {
+        "q": "Kill process with PID 1234",
+        "a": ["kill 1234"],
+        "hint": "kill + PID"
+    },
+    {
+        "q": "Show listening ports",
+        "a": ["ss -tulpen"],
+        "hint": "ss with tcp/udp/listen flags"
+    },
+    {
+        "q": "Show IP addresses",
+        "a": ["ip a"],
+        "hint": "modern replacement for ifconfig"
+    },
+    {
+        "q": "Show route table",
+        "a": ["ip route"],
+        "hint": "ip routing info"
+    },
+    {
+        "q": "Change owner to user pharr for file.txt",
+        "a": ["chown pharr file.txt"],
+        "hint": "change owner"
+    },
+    {
+        "q": "Change permissions to rwxr-xr-x",
+        "a": ["chmod 755 file"],
+        "hint": "numeric permissions"
+    },
 
-    {"q": "Create empty file notes.txt", "a": ["touch notes.txt"], "combo": ["touch notes.txt && ls -lah notes.txt"]},
-    {"q": "View contents of notes.txt", "a": ["cat notes.txt"], "combo": ["cat notes.txt | wc -l"]},
-    {"q": "View file with pager", "a": ["less notes.txt"], "combo": ["less notes.txt"]},
-    {"q": "Show first 10 lines of notes.txt", "a": ["head notes.txt", "head -n 10 notes.txt"], "combo": ["cat notes.txt | head"]},
-    {"q": "Show last 10 lines of notes.txt", "a": ["tail notes.txt", "tail -n 10 notes.txt"], "combo": ["cat notes.txt | tail"]},
-    {"q": "Show last 50 lines of log.txt", "a": ["tail -n 50 log.txt"], "combo": ["tail -n 50 log.txt | grep ERROR"]},
 
-    {"q": "Search for 'TODO' in notes.txt", "a": ["grep TODO notes.txt", "grep 'TODO' notes.txt"], "combo": ["grep -n TODO notes.txt"]},
-    {"q": "Search case-insensitive for 'error' in log.txt", "a": ["grep -i error log.txt", "grep -i 'error' log.txt"], "combo": ["grep -i error log.txt | wc -l"]},
-    {"q": "Show matching lines with line numbers", "a": ["grep -n ERROR log.txt", "grep -n 'ERROR' log.txt"], "combo": ["grep -n ERROR log.txt | head"]},
-
-    {"q": "Find all .txt files under current folder", "a": ["find . -type f -name \"*.txt\"", "find . -type f -name '*.txt'"], "combo": ["find . -type f -name \"*.txt\" | wc -l", "find . -type f -name '*.txt' | wc -l"]},
-    {"q": "Find all folders named logs", "a": ["find . -type d -name logs"], "combo": ["find . -type d -name logs | wc -l"]},
-
-    {"q": "Show disk usage for current folder", "a": ["du -sh ."], "combo": ["du -sh . && df -h"]},
-    {"q": "Show memory usage (human-readable)", "a": ["free -h"], "combo": ["free -h && uptime"]},
-    {"q": "Show system uptime", "a": ["uptime"], "combo": ["uptime && whoami"]},
-
-    {"q": "Show environment PATH", "a": ["echo $PATH"], "combo": ["echo $PATH | tr ':' '\\n' | head"]},
-    {"q": "Show command history (last 20)", "a": ["history | tail -n 20", "history | tail"], "combo": ["history | grep apt | tail"]},
-
-    {"q": "Show running services (systemd)", "a": ["systemctl --type=service --state=running"], "combo": ["systemctl --type=service --state=running | head"]},
-    {"q": "Show status of ssh service", "a": ["systemctl status ssh", "systemctl status sshd"], "combo": ["systemctl status ssh | head", "systemctl status sshd | head"]},
-
-    {"q": "List open network ports (listening)", "a": ["ss -tulpn", "ss -tulpen"], "combo": ["ss -tulpn | grep LISTEN", "ss -tulpen | grep LISTEN"]},
-    {"q": "Show IP routes", "a": ["ip route"], "combo": ["ip route | head"]},
-
-    {"q": "Show current folder size by items", "a": ["ls -lah"], "combo": ["ls -lah | head"]},
-    {"q": "Count files in current directory", "a": ["ls | wc -l", "ls -1 | wc -l"], "combo": ["ls -lah | wc -l"]},
-
-    {"q": "Show permissions and ownership of notes.txt", "a": ["ls -lah notes.txt"], "combo": ["stat notes.txt | head"]},
-    {"q": "Show detailed info about notes.txt", "a": ["stat notes.txt"], "combo": ["stat notes.txt | head"]},
-
-    {"q": "Print working directory", "a": ["pwd"], "combo": ["pwd && ls -lah"]},
-    {"q": "List files (long, human, all)", "a": ["ls -lah", "ls -alh", "ls -la -h"], "combo": ["ls -lah | grep \".py\"", "ls -lah | grep '.py'"]},
-    {"q": "Change to your home directory", "a": ["cd", "cd ~"], "combo": ["cd ~ && pwd"]},
-    {"q": "Make a directory named test", "a": ["mkdir test"], "combo": ["mkdir -p test && ls -lah | grep test"]},
-    {"q": "Remove file.txt", "a": ["rm file.txt"], "combo": ["rm -f file.txt && ls -lah"]},
-    {"q": "Copy a.txt to b.txt", "a": ["cp a.txt b.txt"], "combo": ["cp a.txt b.txt && ls -lah | grep b.txt"]},
-    {"q": "Move a.txt to b.txt", "a": ["mv a.txt b.txt"], "combo": ["mv a.txt b.txt && ls -lah | grep b.txt"]},
-    {"q": "Show running processes", "a": ["ps aux"], "combo": ["ps aux | head"]},
-    {"q": "Show disk usage (human-readable)", "a": ["df -h"], "combo": ["df -h | head"]},
-    {"q": "Show IP addresses", "a": ["ip a", "ip addr"], "combo": ["ip a | head -n 25", "ip addr | head -n 25"]},
-    {"q": "Count lines in data.txt", "a": ["wc -l data.txt"], "combo": ["cat data.txt | wc -l"]},
-    {"q": "Search for ERROR in log.txt", "a": ["grep ERROR log.txt", "grep 'ERROR' log.txt"], "combo": ["grep ERROR log.txt | wc -l", "grep 'ERROR' log.txt | wc -l"]},
-    {"q": "Overwrite out.txt with output of ls", "a": ["ls > out.txt"], "combo": ["ls -lah > out.txt && wc -l out.txt"]},
-    {"q": "Append output of date into out.txt", "a": ["date >> out.txt"], "combo": ["date >> out.txt && tail -n 3 out.txt"]},
-    {"q": "Set permissions on file.txt to 644", "a": ["chmod 644 file.txt"], "combo": ["chmod 644 file.txt && ls -lah file.txt"]},
+    {
+        "q": "List files (including hidden) in long format",
+        "a": ["ls -lah"],
+        "hint": "Think: ls + long + all + human"
+    },
+    {
+        "q": "Show current working directory",
+        "a": ["pwd"],
+        "hint": "3-letter command for 'print working directory'"
+    },
+    {
+        "q": "Create a folder named test",
+        "a": ["mkdir test"],
+        "hint": "Make directory"
+    },
+    {
+        "q": "Create an empty file named notes.txt",
+        "a": ["touch notes.txt"],
+        "hint": "Touch creates empty files"
+    },
+    {
+        "q": "Show the last 20 lines of file.log",
+        "a": ["tail -n 20 file.log"],
+        "hint": "tail + -n for number of lines"
+    },
+    {
+        "q": "Search for 'error' in app.log (case-insensitive)",
+        "a": ["grep -i error app.log"],
+        "hint": "grep with -i ignores case"
+    },
+    {
+        "q": "Make script.sh executable",
+        "a": ["chmod +x script.sh"],
+        "hint": "chmod +x adds execute permission"
+    },
 ]
 
-COMBO_QUESTIONS = [
-    {"q": "List files and filter for .py", "a": ["ls -lah | grep \".py\"", "ls -lah | grep '.py'"]},
-    {"q": "Count lines containing ERROR in log.txt", "a": ["grep ERROR log.txt | wc -l", "grep 'ERROR' log.txt | wc -l"]},
-    {"q": "Find python processes (simple)", "a": ["ps aux | grep python"]},
-    {"q": "Show listening ports and filter LISTEN", "a": ["ss -tulpn | grep LISTEN", "ss -tulpen | grep LISTEN"]},
-    {"q": "Count TODOs in current folder (recursive)", "a": ["grep -R TODO . | wc -l", "grep -R 'TODO' . | wc -l"]},
-    {"q": "Count .log files under current folder", "a": ["find . -type f -name \"*.log\" | wc -l", "find . -type f -name '*.log' | wc -l"]},
-]
+def normalize(s: str) -> str:
+    # normalize whitespace so "tail   -n 20 file.log" still counts
+    return " ".join(s.strip().split())
 
-# =========================
-# HELPERS
-# =========================
-
-def norm(s: str) -> str:
-    return " ".join(s.strip().lower().split())
-
-def ask_one(item, strict: bool):
+def ask_one(item: dict, strict: bool = False) -> tuple[str, float, bool]:
     """
-    Returns: (status, dt, got_point)
-    status: ok | bad | hint | quit
+    Returns (status, seconds, got_point)
+    status: "ok" | "hint" | "quit"
     """
-    print("=" * 60)
+    print("\n" + "=" * 48)
     print(item["q"])
     print("(Enter = hint, q = quit)")
-
     t0 = time.time()
-    raw = input("Command: ")
-    user = raw.strip()
-
-    if user.lower() in ["q", "quit", "exit"]:
-        return "quit", 0.0, False
-
-    if user == "":
-        print("💡 Hint:", item["a"][0])
-        print()
-        return "hint", 0.0, False
-
-    accepted = item["a"]
+    user = input("Command: ").strip()
     dt = time.time() - t0
 
+    if user.lower() == "q":
+        return ("quit", dt, False)
+
+    if user == "":
+        # Hint mode (no penalty, just gives clue)
+        hint = item.get("hint", "No hint available.")
+        print(f"💡 Hint: {hint}")
+        return ("hint", dt, False)
+
+    user_n = normalize(user)
+    answers_n = [normalize(a) for a in item["a"]]
+
+    got_point = user_n in answers_n
+
+    if got_point:
+        print("✅ Correct!")
+        return ("ok", dt, True)
+
+    # Wrong: show correct answer(s)
+    print("❌ Not quite.")
     if strict:
-        ok = (user == accepted[0])
-    else:
-        ok = (norm(user) in [norm(x) for x in accepted])
-
-    if ok:
-        print(f"✅ Correct! ({dt:.1f}s)\n")
-        return "ok", dt, True
-
-    print(f"❌ Not quite. ({dt:.1f}s)")
+        print("Strict mode: exact match required.")
     print("✅ Accepted:")
-    for v in accepted:
-        print(" -", v)
-    print()
-    return "bad", dt, False
+    for a in item["a"]:
+        print(f" - {a}")
+    return ("ok", dt, False)
 
-def pick_bank(mode: str):
-    if mode == "1":
-        return "singles", SINGLE_QUESTIONS
-    if mode == "2":
-        return "combos", COMBO_QUESTIONS
-    if mode == "3":
-        return "mixed", (SINGLE_QUESTIONS + COMBO_QUESTIONS)
-    if mode == "4":
-        return "speedrun", (SINGLE_QUESTIONS + COMBO_QUESTIONS)
-    return "singles", SINGLE_QUESTIONS
+def main():
+    print("ZERO2CLOUD DRILL (SIMPLE)")
+    print("Hint: press Enter on empty input to get a clue.\n")
 
-# =========================
-# SESSION LOOP
-# =========================
+    strict = input("Strict mode? [y/N]: ").strip().lower() == "y"
 
-def session_loop(bank, mode_name: str, strict: bool, speedrun_n: int | None = None):
     correct = 0
     wrong = 0
     hints = 0
+    missed = {}  # key -> count
     total_time = 0.0
-    combos_done = 0
-    missed = {}        # main questions missed
-    missed_combo = {}  # bonus combos missed
-
-    speed_t0 = time.time() if speedrun_n else None
 
     while True:
-        item = random.choice(bank)
-
+        item = random.choice(BANK)
         status, dt, got_point = ask_one(item, strict=strict)
 
         if status == "quit":
@@ -162,82 +177,19 @@ def session_loop(bank, mode_name: str, strict: bool, speedrun_n: int | None = No
             key = f"{item['q']}  ->  {item['a'][0]}"
             missed[key] = missed.get(key, 0) + 1
 
-        # SIMPLE RULE:
-        # If it was a SINGLE question AND you got it correct, do exactly ONE combo follow-up.
-        if got_point and (item in SINGLE_QUESTIONS) and item.get("combo") and mode_name in ["singles", "mixed", "speedrun"]:
-            print("⚡ Bonus rep (combo):")
-            target = item["combo"][0]
-            combo_item = {"q": f"BONUS COMBO (type this): {target}", "a": item["combo"]}
+        print(f"\nScore: {correct}/{correct+wrong} | Wrong: {wrong} | Hints: {hints} | Time: {total_time:.1f}s")
 
-            c_status, c_dt, c_point = ask_one(combo_item, strict=False)
-
-            if c_status == "quit":
-                break
-            if c_status == "hint":
-                hints += 1
-            else:
-                total_time += c_dt
-                if c_point:
-                    combos_done += 1
-                else:
-                    key = f"{item['q']} (combo)  ->  {item['combo'][0]}"
-                    missed_combo[key] = missed_combo.get(key, 0) + 1
-
-        # Speedrun ends after N main questions (not counting combo bonus reps)
-        if speedrun_n and (correct + wrong) >= speedrun_n:
-            break
-
-        print(f"Score: {correct}/{(correct + wrong)}  | Wrong: {wrong}  | Hints: {hints}  | Combos: {combos_done}\n")
-
-    print("\n" + "=" * 60)
-    if speedrun_n:
-        elapsed = time.time() - speed_t0
-        penalty = wrong * 3.0
-        final = elapsed + penalty
-        print(f"🏁 SPEEDRUN RESULT ({speedrun_n} questions)")
-        print(f"Time: {elapsed:.1f}s")
-        print(f"Wrong: {wrong}  (penalty +{penalty:.1f}s)")
-        print(f"Bonus combos completed: {combos_done}")
-        print(f"Final: {final:.1f}s")
-    else:
-        total_answered = correct + wrong
-        avg = (total_time / total_answered) if total_answered else 0.0
-        print("SESSION SUMMARY")
-        print(f"Correct: {correct}/{total_answered}")
-        print(f"Wrong:   {wrong}")
-        print(f"Hints:   {hints}")
-        print(f"Bonus combos completed: {combos_done}")
-        print(f"Total time (main + bonus reps): {total_time:.1f}s")
-        print(f"Avg time per main question: {avg:.1f}s")
-    print("=" * 60 + "\n")
+    print("\n" + "=" * 48)
+    print("SESSION SUMMARY")
+    print(f"Correct: {correct}")
+    print(f"Wrong:   {wrong}")
+    print(f"Hints:   {hints}")
+    print(f"Time:    {total_time:.1f}s")
 
     if missed:
-        print("\nMISSED (main):")
-        for k, v in sorted(missed.items(), key=lambda kv: kv[1], reverse=True)[:10]:
-            print(f"  {v}x  {k}")
-
-    if missed_combo:
-        print("\nMISSED (combo):")
-        for k, v in sorted(missed_combo.items(), key=lambda kv: kv[1], reverse=True)[:10]:
-            print(f"  {v}x  {k}")
-
-
-def main():
-    print("\nZERO2CLOUD LINUX DRILL (SIMPLE)")
-    print("1) Singles (foundation + bonus combo on correct)")
-    print("2) Combos (wild mode only)")
-    print("3) Mixed")
-    print("4) Speedrun (10)")
-    mode = input("Select mode [1-4]: ").strip()
-
-    mode_name, bank = pick_bank(mode)
-
-    strict = input("Strict mode for main questions? [y/N]: ").strip().lower() == "y"
-
-    if mode == "4":
-        session_loop(bank, mode_name=mode_name, strict=strict, speedrun_n=10)
-    else:
-        session_loop(bank, mode_name=mode_name, strict=strict)
+        print("\nMost missed:")
+        for k, v in sorted(missed.items(), key=lambda x: x[1], reverse=True)[:10]:
+            print(f" - ({v}x) {k}")
 
 if __name__ == "__main__":
     main()

@@ -27,3 +27,16 @@ echo $PATH understood command search order
 Confirmed privilege change: whoami vs sudo whoami → pharr → root
 
 ✅ Mood: big-picture Linux is starting to click.
+
+
+## 2026-01-28
+- Long aquaculture workday
+- Investigated repeated crashes (AMD iGPU, MEMORY_MANAGEMENT)
+- Disabled browser hardware acceleration (Brave, Edge)
+- System rebooted, monitoring stability
+- Light Markov chain work (cert decision model)
+
+
+## 2026-01-29 
+07:10 — Morning routine: netcheck + syscheck
+- 2026-01-30 07:41 — Morning routine: netcheck + syscheck
