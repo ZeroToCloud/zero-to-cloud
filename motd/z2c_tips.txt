@@ -1,0 +1,9 @@
+find . -name test.txt        # find a file by exact name
+wc -l file.txt               # count lines in a file
+chmod +x script.sh           # make a script executable
+chown pharr file.txt         # change owner to pharr
+chgrp staff file.txt         # change group to staff
+journalctl -u ssh            # show logs for ssh service
+systemctl status ssh         # check ssh service status
+ping -c 1 google.com         # ping once
+pkill firefox                # kill process by name
